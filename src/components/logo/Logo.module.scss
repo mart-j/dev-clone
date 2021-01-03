@@ -1,0 +1,15 @@
+.logo {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin: 8px 0;
+    padding: 8px;
+    display: inline-flex;
+    background-color: black;
+    color: white;
+    &:hover {
+      background-color: rgb(37, 37, 37);
+    }
+  }
+  
