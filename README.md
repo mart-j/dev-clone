@@ -1,1 +1,2 @@
-# mern-auth-front
+# dev-clone
+https://mart-j.github.io/dev-clone/
