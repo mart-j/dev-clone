@@ -1,0 +1,46 @@
+.post {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #d6d8d9;
+  margin-bottom: 5px;
+}
+.author,
+.date {
+  font-size: 14px;
+  color: #4d5760;
+}
+
+.likeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  color: #cc3a3a;
+  position: relative;
+}
+.heartIcon {
+  margin-right: 4px;
+
+}
+.tagWrapper {
+  display: flex;
+}
+.tag {
+  font-size: 14px;
+  cursor: pointer;
+  color: #4d576096;
+  padding: 5px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.027);
+    color: #414547b0;
+  }
+}
+
+.likeCount {
+position: absolute;
+right: 0;
+}

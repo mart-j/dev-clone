@@ -2,16 +2,22 @@ import React, { useEffect } from 'react';
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import Header from './components/header/Header';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { fetchUser } from './store/user/actions';
-import Header from './components/header/Header';
+
+import { fetchPostsAction } from './store/posts/actions';
 
 const App = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+
+  useEffect(() => {
+    fetchPostsAction(dispatch);
+  }, []);
 
   const checkCurrentUser = async () => {
     const path = location.pathname;
@@ -20,14 +26,10 @@ const App = () => {
       headers: { 'x-auth-token': authToken },
     };
     const { data: tokenResponse } = await axios.post(
-      'http://localhost:5000/users/tokenIsValid',
+      'https://dev-clone.herokuapp.com/users/tokenIsValid',
       null,
       header,
     );
-
-    if (!tokenResponse && (path !== '/login' && path !== '/register')) {
-      history.push('/login');
-    }
 
     if (tokenResponse && (path === '/login' || path === '/register')) {
       history.push('/');
@@ -35,7 +37,7 @@ const App = () => {
 
     // if token is valid > continue..
     if (tokenResponse) {
-      const { data } = await axios.get('http://localhost:5000/users', header);
+      const { data } = await axios.get('https://dev-clone.herokuapp.com/users', header);
 
       dispatch(
         fetchUser({
@@ -48,7 +50,7 @@ const App = () => {
 
   useEffect(() => {
     checkCurrentUser();
-  }, [location]);
+  }, [location.pathname]);
   return (
     <>
       <Header />
